@@ -41,6 +41,8 @@ void MyGUI::Init(void) {
 	gtk_widget_set_size_request(mainWnd, 400, 150);
 	gtk_window_set_resizable(GTK_WINDOW(mainWnd), FALSE);
 	
+	gtk_window_set_icon_from_file(GTK_WINDOW(mainWnd), "./chip.ico", NULL);
+	
 	table = gtk_table_new (5, 5, TRUE);
 	
 	gtk_container_add (GTK_CONTAINER (mainWnd), table);
