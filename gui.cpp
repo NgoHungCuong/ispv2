@@ -89,6 +89,7 @@ void MyGUI::Init(void) {
     edFile = gtk_entry_new();
     gtk_table_attach_defaults (GTK_TABLE (table), edFile, 1, 4, 2, 3);
     gtk_widget_show (edFile);
+    gtk_editable_set_editable((GtkEditable*)edFile, FALSE);
     
     cbFamily = gtk_combo_new();
     GList *flist=NULL;
