@@ -274,6 +274,7 @@ void myAT89S::WriteFlash(char *szPartName, char *szFile) {
 		}
 		myGui.SetProgress((float)j/u16NumOfPack);
 	}
+	myGui.SetProgress(1.0);
 	//printf("\n");
 	//printf("*------------------------------------------------*\n");
 	
@@ -298,6 +299,7 @@ void myAT89S::WriteFlash(char *szPartName, char *szFile) {
 		}
 		myGui.SetProgress((float)j/u16NumOfPack);
 	}
+	myGui.SetProgress(1.0);
 	//printf("\n");
 	myGui.SetProgress("Read Flash: OKAY");
 	//printf("*------------------------------------------------*\n");

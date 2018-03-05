@@ -1,6 +1,9 @@
 #include "gui.h"
+#include <string.h>
 
 #include "flash89s.h"
+
+#define ver "180305"
 
 extern MyGUI myGui;
 
@@ -14,6 +17,13 @@ gboolean OnBrowse( GtkWidget *widget, GdkEventButton *event, gpointer data ) {
 	fsel=gtk_file_chooser_dialog_new("Open Flash File", GTK_WINDOW(data),
 	GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_OK, GTK_RESPONSE_OK, 
 	GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+	
+	GtkFileFilter *filter;
+	filter = gtk_file_filter_new();
+	gtk_file_filter_add_pattern (filter, "*.hex");
+	//gtk_file_filter_add_pattern (filter, "*.bin");
+	
+	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(fsel), filter);
 	
 	gtk_widget_show_all(fsel);
 	
@@ -35,8 +45,12 @@ void MyGUI::Init(void) {
 	GtkWidget *label;
 	GtkWidget *table;
 	
+	char szVer[100];
+	strcpy(szVer, "ISP Prog v2 - ");
+	strcat(szVer, ver);
+	
 	mainWnd=gtk_window_new(GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title(GTK_WINDOW(mainWnd), "ISP Prog v2");
+	gtk_window_set_title(GTK_WINDOW(mainWnd), szVer);
 	gtk_window_set_position(GTK_WINDOW(mainWnd), GTK_WIN_POS_CENTER_ALWAYS);	
 	gtk_widget_set_size_request(mainWnd, 400, 150);
 	gtk_window_set_resizable(GTK_WINDOW(mainWnd), FALSE);
