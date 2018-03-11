@@ -3,7 +3,7 @@
 
 #include "flash89s.h"
 
-#define ver "180305"
+#define ver "180311"
 
 extern MyGUI myGui;
 
@@ -28,6 +28,8 @@ gboolean OnBrowse( GtkWidget *widget, GdkEventButton *event, gpointer data ) {
 	gtk_widget_show_all(fsel);
 	
 	gint res;
+	
+	gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(fsel), g_get_home_dir());
 	
 	res=gtk_dialog_run(GTK_DIALOG(fsel));
 	
